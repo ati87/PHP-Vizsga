@@ -1,0 +1,467 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
+
+@font-face {
+    font-family: "fontello";
+    src: url("../fonts/fontello.eot?98824604");
+    src: url("../fonts/fontello.eot?98824604#iefix") format("embedded-opentype"),
+        url("../fonts/fontello.woff2?98824604") format("woff2"), 
+        url("../fonts/fontello.woff?98824604") format("woff"),
+        url("../fonts/fontello.ttf?98824604") format("truetype"),
+        url("../fonts/fontello.svg?98824604#fontello") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    font-family: "fontello";
+    display: inline-block;
+    width: 1em;
+    margin: 0 10px 0 0;
+    text-align: center;
+}
+
+.icon-mail:before {
+    content: "\e800";
+}
+.icon-phone:before {
+    content: "\e801";
+}
+.icon-cog:before {
+    content: "\e802";
+}
+.icon-home:before {
+    content: "\e803";
+}
+.pointer {
+    cursor: pointer;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background: url("../pics/bodyBackground.jpg");
+}
+.wrapper {
+    background-color: rgb(255, 255, 255);
+    max-width: 1000px;
+    box-shadow: 0 0 200px rgba(255, 255, 255, 0.3);
+    margin: 0 auto;
+}
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.login {
+    background: rgb(162, 173, 206);
+    padding: 5px;
+}
+form {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+label {
+    font-weight: 500;
+}
+input {
+    margin: 0 5px;
+    border: 1px solid #CCCCCC;
+}
+.register{
+    margin-left: 20px;
+    padding: 2px 3px 2px 3px;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.16, rgb(207, 207, 207)), color-stop(0.79, rgb(252, 252, 252)));
+     background-image: -moz-linear-gradient(center bottom, rgb(207, 207, 207) 16%, rgb(252, 252, 252) 79%);
+    background-image: linear-gradient(to top, rgb(207, 207, 207) 16%, rgb(252, 252, 252) 79%); 
+  
+   font-size: 14px;
+   color: black;
+    text-decoration: none;
+}
+.logout{
+        display:flex;
+        justify-content:flex-end;
+        flex-wrap: wrap;
+}
+.navImg {
+    float: left;
+    padding: 6.8px;
+}
+
+nav {
+    background-color: rgb(197, 186, 192);
+    width: 100%;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    float: left;
+}
+nav::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+nav a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px;
+    transition: background-color 0.4s, color 1s;
+    width: 9rem;
+    text-align: center;
+    line-height: 1.6;
+    transition: 0.3s;
+}
+#menu::after {
+    content: "🢓";
+    position: absolute;
+    top: 45.528px;
+    left: 305px;
+}
+nav a:hover {
+    color: white;
+    background: #4b4b4a;
+}
+.active {
+    text-decoration: underline;
+}
+.leNyilo {
+    display: none;
+    background-color: rgb(197, 186, 192);
+    border: 1px thin black;
+}
+.menu1 {
+    position: absolute;
+    top: 76.818px;
+    left: 189.5px;
+}
+.menu2 {
+    position: absolute;
+    top: 122.4px;
+    left: 189.5px;
+}
+.mobile-menu-button {
+    width: 50px;
+    display: block;
+    float: right;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 1px 5px 0 0;
+    display: none;
+}
+.mobile-menu-button span {
+    display: block;
+    height: 4px;
+    background: rgb(0, 0, 0);
+    margin: 0 0 5px 0;
+    border-radius: 2px;
+}
+.mobile-menu-button span:last-of-type {
+    margin: 0;
+}
+.mobile-menu-button + input[type="checkbox"] {
+    display: none;
+}
+.mobile-menu-button + input[type="checkbox"]:checked ~ .nav li {
+    display: block;
+}
+main {
+    margin: 50px auto 0 auto;
+    width: 95%;
+}
+main form input{
+    width: 200px !important;
+}
+
+.cimsorH1 {
+    background-image: url("../pics/h1background.jpg");
+    background-size: cover;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.h1{
+    position: absolute;
+    top: 90px;
+    animation-name: title;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+@keyframes title{
+    0% {top: 90px}
+    100%{top:130px}
+}
+
+.main-box::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.main-box {
+    margin: 20px 0s;
+    border: 1px solid orangered;
+    border-radius: 5px;
+}
+.main-box img {
+    height: 150px;
+    float: right;
+    border-radius: 5px;
+    margin: 5px 5px 5px 10px;
+}
+.indexH2 {
+    border-top: 1px solid orange;
+    padding-top: 10px;
+}
+.main2Img {
+    margin-top: 20px !important;
+    height: 180px !important;
+}
+.main3Img {
+    height: 190px !important;
+}
+.Img {
+    height: 200px !important;
+    margin-top: 55px !important;
+}
+.ImgSalgo {
+    height: 300px !important;
+    margin-top: 55px !important;
+}
+.ImgRaklapos{
+    height: 400px !important;
+    margin-top: 20px !important;
+    margin-right: 10px !important;
+    float: left !important;
+}
+.main-box h2 {
+    padding: 10px 10px 5px 10px;
+}
+
+.main-box p {
+    text-align: justify;
+    padding: 15px;
+}
+.salgoSection {
+    column-count: 2;
+}
+iframe {
+    padding: 10px;
+}
+.connection {
+    display: flex;
+}
+.availability{
+    margin-top: 0.5rem;
+    margin-left: .5rem  ;
+}
+.availability ul li {
+    float: none;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+#cookieWarning {
+    position: fixed;
+    bottom: 40%;
+    left: 50%;
+    width: 300px !important;
+    height: 200px;
+    margin-left: -150px;
+    background-color: orangered;
+    border-radius: 30px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#cookieWarning button {
+    color: black;
+    background: yellow;
+    border-radius: 150px;
+    padding: 8px 30px;
+    border: none;
+    cursor: pointer;
+}
+.cookieBox {
+    text-align: center;
+}
+footer {
+    margin-top: 40px !important;
+}
+.footer {
+    background: #666;
+    padding-bottom: 10px !important;
+}
+.footer-menu {
+    padding: 10px 0 0 10px;
+}
+.footer a {
+    display: inline-block;
+    line-height: 1.8;
+    font-weight: 400;
+    text-decoration: none;
+    color: #ffffff;
+}
+.footer a::before {
+    content: "|";
+    font-weight: 300;
+    font-size: 20px;
+    left: 0;
+    color: #fff;
+    display: inline-block;
+    padding-right: 5px;
+}
+.footer .icon-home:before {
+    content: none;
+}
+
+//A MÉDIA QUERY INNEN KEZDŐDIK
+
+@media only screen and (max-width: 700px) {
+    * {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        -ms-transition: none !important;
+        transition: none !important;
+       }
+     
+    header {
+        position: static;
+    }
+    .mobile-menu-button {
+        display: block;
+    }
+    .nav {
+        display: block;
+        position: relative;
+        top: 45.6px;
+        bottom: 45.6px;
+    }
+    .nav li {
+        display: none;
+        border-top: 1px solid rgb(0, 0, 0);
+    }
+    ul li {
+        float: none;
+    }
+    .nav a {
+        background-color: rgb(197, 186, 192);
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+    .leNyilo {
+        display: block !important;
+        position: static;
+    }
+
+    .cimsorH1 {
+        height: 70px;
+    }
+    .h1{
+        position: static;
+    }
+   
+    .main-box h2 {
+        font-size: 16px;
+    }
+    .main1Img {
+        margin-top: 45px !important;
+    }
+    .main3Img {
+        margin-top: 15px !important;
+    }
+    #menu::after {
+        display: none;
+    }
+    .main2Img {
+        height: 120px !important;
+    }
+    .ImgSalgo {
+        height: 200px !important;
+        margin-top: 55px !important;
+    }
+    .ImgRaklapos{
+        height: 300px !important;
+    }
+    .connection {
+        display: block;
+    }
+    #cookieWarning {
+        width: 200px !important;
+        height: 120px;
+        margin-left: -100px;
+    }
+    .footer a {
+        display: block;
+    }
+    .footer a:before {
+        content: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 20px;
+    }
+    .cimsorH1 {
+        height: 50px;
+    }
+    form {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    
+    #submit {
+        width: auto !important;
+    }
+    input {
+        margin: 3px 0;
+    }
+    .main1Img {
+        height: 120px !important;
+        margin-top: 45px !important;
+    }
+    .ImgRaklapos{
+        height: 200px !important;
+    }
+    iframe {
+        height: 150px !important;
+        width: 200px !important;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .main2Img {
+        height: 100px !important;
+    }
+    .main3Img {
+        height: 120px !important;
+    }
+    .ImgSalgo {
+        height: 250px !important;
+        margin-right: 30px !important;
+    }
+}
+@media only screen and (max-width: 300px) {
+    main img {
+        display: none;
+    }
+}
