@@ -9,9 +9,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raktártechnika</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="pics/favicon-32x32.png">
     <link rel="stylesheet" href="./css/index.css?v=1">
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: orangered;
+            color: white;
+        }
+
+        .btn.btn {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,7 +99,16 @@
             <div class="cimsorH1">
                 <h1>Raktártechnikai állványrendszerek</h1>
             </div>
-            <table>
+            <table id="customers">
+                <tr>
+
+                    <th>Megnevezes</th>
+                    <th>Kép</th>
+                    <th>Kategoria</th>
+                    <th>Leiras</th>
+                    <th>Nettó ár</th>
+
+                </tr>
                 <?php
                 require_once('../weboldal/php/conf.php');
                 $conn = mysqli_connect($server, $user, $password, $db);
@@ -58,54 +116,56 @@
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
+                //az oldalon történő lapozáshoz (foly. az oldal alján)
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                } else {
+                    $page = 1;
+                }
+                $num_per_page = 05;
+                $start_from = ($page - 1) * 05;
 
                 $sql = "SELECT termek.*, termekar.*
-                          FROM termek LEFT JOIN termekar ON termek.termek_id = termekar.termek_id WHERE NOW() BETWEEN Tol and Ig ";
+                FROM termek LEFT JOIN termekar ON termek.termek_id = termekar.termek_id LIMIT $start_from, $num_per_page";
                 $result = mysqli_query($conn, $sql);
                 if (!$result) {
                     print(mysqli_error($conn) . ' ' . mysqli_errno($conn));
                 } else {
                     while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                        <div class="main-box">
-                            <tr>
-                                <td><?php print($row['Megnevezes']); ?></td>
 
-                                <td><?php print($row['Mennyisegi_egyseg']); ?></td>
-                                <td><a href="../adminoldal/img/<?php print($row['Kep']) ?>  "><img src="../adminoldal/img/<?php print($row['Kep']) ?>" alt="" class="img-fluid" style="height:100px ;"></a></td>
-                                <td><?php print($row['Kategoria']); ?></td>
-                                <td><?php print($row['Leiras']); ?></td>
-                                <td><?php print($row['nettoAr']); ?> HUF</td>
+                        <tr>
+                            <td><?php print($row['Megnevezes']); ?></td>
+                            <td><a href="../adminoldal/img/<?php print($row['Kep']) ?>  "><img src="../adminoldal/img/<?php print($row['Kep']) ?>" alt="" class="img-fluid" style="height:100px ;"></a></td>
+                            <td><?php print($row['Kategoria']); ?></td>
+                            <td><?php print($row['Leiras']); ?></td>
+                            <td><?php print($row['nettoAr']); ?> HUF</td>
 
 
-                            </tr>
-                        </div>
+                        </tr>
+
                 <?php
                     }
                 }
-                //zárni kell
-                mysqli_close($conn);
                 ?>
             </table>
 
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+            <?php
+            //az oldalon történő lapozáshoz
+            $pr_query = "SELECT termek.*, termekar.*
+   FROM termek LEFT JOIN termekar ON termek.termek_id = termekar.termek_id";
+            $pr_result = mysqli_query($conn, $pr_query);
+            $total_record = mysqli_num_rows($pr_result);
 
+            $total_page = ceil($total_record / $num_per_page);
 
+            for ($i = 1; $i <= $total_page; $i++) {
+                print("<a href='webaruhaz.php?page=" . $i . "'class=btn btn-primary' class='btn'>$i</a>");
+            }
 
-
-
-
-
-
-
-
+            //zárni kell
+            mysqli_close($conn);
+            ?>
         </main>
         <footer>
             <div id="cookieWarning">
