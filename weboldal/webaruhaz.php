@@ -107,6 +107,8 @@
                     <th>Kategoria</th>
                     <th>Leiras</th>
                     <th>Nettó ár</th>
+                    <th>Vásárolni kívánt mennyiség</th>
+                    <th></th>
 
                 </tr>
                 <?php
@@ -140,6 +142,20 @@
                             <td><?php print($row['Kategoria']); ?></td>
                             <td><?php print($row['Leiras']); ?></td>
                             <td><?php print($row['nettoAr']); ?> HUF</td>
+                            <td>
+                                <form action="cart.php">
+                                    
+                                    <input type="hidden" name='name' value=<?php print($row['Megnevezes']); ?>>
+                                    <input type="hidden" name='price' value=<?php print($row['nettoAr']); ?>>
+                                    <input type="hidden" name='img' value=<?php print($row['Kep']); ?>>
+
+
+                                    <input type="number" min=1 max="<?php print($row['Darabszam']); ?>">
+                            </td>
+                            <td>
+                                <button class="btn btn-info" style="background-color:gray !important ;" type="submit" name="addToCart" value="<?php print($row['termek_id']); ?>">Kosárba</button>
+                                </form>
+                            </td>
 
 
                         </tr>

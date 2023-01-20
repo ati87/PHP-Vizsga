@@ -27,6 +27,7 @@
             print('<a class="register" href="./php/logout.php">Kijelentkezés</a>');
             print('</div>');
         }
+       
         
 
     ?>

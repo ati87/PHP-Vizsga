@@ -8,6 +8,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $ppassword = mysqli_real_escape_string($conn, $_POST['password']);
+        
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -34,4 +35,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     } else {
         print('nem megfelelő email cím');
     }
+}
+
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
 }

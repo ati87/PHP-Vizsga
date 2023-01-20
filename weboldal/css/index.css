@@ -123,13 +123,13 @@ nav {
           box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
 }
 
-ul {
+nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-ul li {
+nav ul li {
   float: left;
 }
 
