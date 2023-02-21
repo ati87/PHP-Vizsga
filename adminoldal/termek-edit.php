@@ -51,7 +51,7 @@ if (!isset($_SESSION['admin_user_id'])) {
                         if (isset($_GET['id'])) {
                             $termek_id = (int)$_GET['id'];
                             $termek_edit = "SELECT  termek.*, termekar.* FROM termek LEFT JOIN termekar 
-                            ON termek.termek_id = termekar.termek_id and termekar.termekar_id='$termek_id' WHERE NOW() BETWEEN Tol and Ig ";
+                            ON termek.termek_id = termekar.termek_id and termekar.termekar_id='$termek_id'";
 
 
 
