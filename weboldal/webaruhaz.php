@@ -174,17 +174,7 @@
                         
                     }
                 }
-                if (isset($_POST['name'])) {
-                    print_r($_POST['name']);
-                    print("<br>");
-                    print_r($_POST['number']);
-                    print("<br>");
-                    print_r($_POST['addToCart']);
-                    print("<br>");
-                    print_r($_POST);
-                    print("<br>");
-                }
-                Print_r($_SESSION['cart']);
+               
 
                 ?>
             </table>
