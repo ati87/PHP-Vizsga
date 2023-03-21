@@ -1,6 +1,9 @@
 <?php session_start();
 ?>
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +22,7 @@
 
             <?php include "php/user_login.php";
             ?>
- 
+
 
             <nav>
                 <label for="mobile-menu" class="mobile-menu-button">

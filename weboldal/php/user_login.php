@@ -22,10 +22,10 @@
     
         if(isset($_SESSION['webpage_user_id'])){
             
-            print('<div class="logout">');
-            print('<a class="register icon-basket" href="./php/logout.php">Kosár</a>');
-            print('<a class="register" href="./php/logout.php">Kijelentkezés</a>');
-            print('</div>');
+            print('<div class="logout">
+            <a class="register icon-basket" href="./cart.php">Kosár</a>
+            <a class="register" href="./php/logout.php">Kijelentkezés</a>
+            </div>');
         }
        
         

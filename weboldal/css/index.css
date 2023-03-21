@@ -123,13 +123,13 @@ nav {
           box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
 }
 
-nav ul {
+ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-nav ul li {
+ul li {
   float: left;
 }
 
@@ -435,7 +435,13 @@ footer {
     display: block;
   }
   .nav {
-    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     position: relative;
     top: 45.6px;
     bottom: 45.6px;

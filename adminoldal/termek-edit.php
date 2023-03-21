@@ -38,7 +38,7 @@ if (!isset($_SESSION['admin_user_id'])) {
                         <h4>Termék szerkesztése
                             <a href="index.php" class="btn btn-danger float-end">Vissza</a>
                         </h4>
-                    </div>
+                    </div> 
                     <div class="card-body">
                         <?php
                         require_once('./conf.php');
@@ -48,15 +48,16 @@ if (!isset($_SESSION['admin_user_id'])) {
                             die("Connection failed: " . mysqli_connect_error());
                         }
 
-                        if (isset($_GET['id'])) {
+                        if (isset($_GET['id']) && isset($_GET['arId'])) {
                             $termek_id = (int)$_GET['id'];
+                            $termekar_id = (int)$_GET['arId'];
+                            print($termek_id."---".$termekar_id);
                             $termek_edit = "SELECT  termek.*, termekar.* FROM termek LEFT JOIN termekar 
-                            ON termek.termek_id = termekar.termek_id and termekar.termekar_id='$termek_id' WHERE NOW() BETWEEN Tol and Ig ";
+                            ON termekar.termekar_id = '$termekar_id' WHERE termek.termek_id='$termek_id'";
 
 
 
                             $termek_result = mysqli_query($conn, $termek_edit);
-
                             if (mysqli_num_rows($termek_result) > 0) {
                                 $row = mysqli_fetch_array($termek_result)
                         ?>

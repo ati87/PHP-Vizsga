@@ -268,8 +268,8 @@ if (!isset($_SESSION['admin_user_id'])) {
                                                 }
                                                 ?> </td>
                                             <td><img src="../adminoldal/img/<?php print($row['Kep']) ?>" alt="" class="img-fluid"></td>
-                                            <td><a href="termek-edit.php?id=<?php print($row['termekar_id']); ?>" class="btn btn-info">Szerkesztés</a></td>
-                                            <td>
+                                            <td><a href="termek-edit.php?id=<?php print($row['termek_id']); ?>&arId=<?php print($row['termekar_id']); ?>" class="btn btn-info">Szerkesztés</a></td>
+                                            <td> 
                                                 <form action="code.php" method="POST">
                                                     <button class="btn btn-info" style="background-color:red !important ;" type="submit" name="delete" value="<?php print($row['termek_id']); ?>">Delete</button>
                                                 </form>

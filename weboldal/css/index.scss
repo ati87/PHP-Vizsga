@@ -350,7 +350,8 @@ footer {
         display: block;
     }
     .nav {
-        display: block;
+        display: flex;
+        flex-direction: column;
         position: relative;
         top: 45.6px;
         bottom: 45.6px;

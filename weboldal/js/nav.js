@@ -9,7 +9,7 @@ navMenu.addEventListener("click", function(){
         }
     }
 }
-);
+); 
 if (sessionStorage.getItem("kattintott3") != "igen") {
     document.getElementById("cookieWarning").style.display = "flex";
 }
