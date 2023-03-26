@@ -49,103 +49,59 @@
 
         <main>
             <div class="cimsorH1">
-                <h1 class="h1">Raktártechnikai állványrendszerek</h1>
+                <h1>Kosár tartalma</h1>
             </div>
             <div class="main-box">
+                <?php
+                if (isset($_SESSION['cart'])) {
+                    foreach($_SESSION['cart'] as $item) {
+                        print($item['name']);
+                        print("  -  ".$item['number']." db");
+                        print("  -  ".$item['price']." Ft");
+                        print('<br>');
 
-                <a href="pics/IndexMain1.jpg"><img src="pics/IndexMain1.jpg" class="main1Img" alt="main1Img"></a>
-                <h2>Bemutatkozás</h2>
-                <article>
-                    <p>Cégünk, a legnagyobb volumenű egyedi megrendeléseket is könnyedén teljesíti. Lehet szó
-                        raktárrendszerek, raklapos és polcrendszerek tervezéséről és kivitelezéséről, irattári,
-                        könyvtári
-                        vagy múzeumtechnológiai fejlesztésről. Termékeink a legmagasabb minőséget képviselik, amelyek
-                        garantáltan kiállják az idő próbáját, a legnagyobb igénybevétel esetében is!</p>
-                </article>
+                    }
+                ?>
+
+
+                    <!--
+                    <table id="customers">
+                        <tr>
+
+                            <th>Megnevezes</th>
+                            <th>Kép</th>
+                            <th>Kategoria</th>
+                            <th>Leiras</th>
+                            <th>Nettó ár</th>
+                            <th>Vásárolni kívánt mennyiség</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td><?php print($row['Megnevezes']); ?></td>
+                            <td><a href="../adminoldal/img/<?php print($row['Kep']) ?>  "><img src="../adminoldal/img/<?php print($row['Kep']) ?>" alt="" class="img-fluid" style="height:100px ;"></a></td>
+                            <td><?php print($row['Kategoria']); ?></td>
+                            <td><?php print($row['Leiras']); ?></td>
+                            <td><?php print($row['nettoAr']); ?> HUF</td>
+                        </tr>
+                -->
+
+
+
+                    <?php
+                    print_r('<br>');
+                    print_r($_SESSION['cart']);
+                    print_r('<br>');
+                    print_r('<br>');
+                    var_dump($_SESSION['cart']);
+                } else {
+                    print("A kosár taralma üres");
+                }
+                    ?>
+
+
+
             </div>
-            <h2 class="indexH2">Hírek, információk, érdekességek a raktártechnika világából</h2>
-            <div class="main-box">
-                <h2>Raktározás tervezés és kivitelezés olcsón</h2>
-                <a href="pics/IndexMain2.jpg"><img src="pics/IndexMain2.jpg" class="main2Img" alt="main2Img"></a>
-                <article>
-                    <p><b>Bizony</b> minden vállalkozás működése során bekövetkezik az az idő, mikor egy megfelelő
-                        tárolási
-                        rendszert kell kialakítani annak érdekében, hogy saját termékeinket illetve áruinkat el tudjuk
-                        raktározni. Teljesen mindegy milyen vállalkozást veszünk alapul, beszélhetünk itt kisebb családi
-                        vállalkozásról vagy akár a magas logisztikai raktárról is. A megfelelő tárolási rendszerre
-                        különös
-                        figyelmet kell akkor is fordítanunk, ha a vállalkozásunkat épp most szeretnénk beindítani vagy
-                        épp
-                        az optimálisabb tárolás érdekében bővíteni szeretnénk. Ha egy raktár megfelelően van berendezve,
-                        az
-                        minden esetben a gazdaságos működéshez ad zöld utat. </p>
-                    <p>
-                        <b>Fontos azonban</b> megjegyezni azt, hogy ha Ön szeretné megtalálni a tökéletes logisztikai
-                        lehetőséget -
-                        mely segítséget nyújt a kialakításhoz -, akkor mindenképp olyan társaságot vagy vállalkozást
-                        válasszon, akik megfelelő referenciával rendelkeznek állványrendszer tervezésében illetve
-                        kivitelezésében egyaránt. Ezen a kiválasztáson nagyon sok múlhat, mivel célszerű a tervezést és
-                        a
-                        kivitelezést egyaránt ugyanazzal a társasággal vagy vállalattal elvégeztetni, mivel ha nem így
-                        teszünk az bizony sok vitát és konfliktust okozhat.
-                    </p>
-                    <p>
-                        <b>Az egész munkafolyamat</b> egy helyszíni felméréssel veszi kezdetét, amely során a raktár
-                        adottságait és
-                        a tárolni kívánt árumennyiséget figyelembe véve az Önök által kiválasztott cég szakmai
-                        munkatársai a
-                        legoptimálisabb megoldási javaslatot fogják Önök elé tárni. Ez a javaslat tartalmazza a
-                        tárolható
-                        áruk mennyiségét, a különféle polcrendszerek teherbírását, az egységnyi tárolt áruk súlyát, a
-                        vállalt garancia idejét, a szolgáltatás díját, a kivitelezés időtartamát illetve az időszakos
-                        karbantartási követelményeket is. Ezen információk elengedhetetlenek ahhoz, hogy Ön a lehető
-                        legoptimálisabb ajánlatot tudja elfogadni illetve, hogy az elkészült munkával teljes mértékben
-                        elégedett is tudjon lenni.
-                    </p>
-                    <p>
-                        <b>Fontos, hogy minden adatot</b> pontosan adjon meg a tervezésnél és a vállalkozásának
-                        lehetséges
-                        bővülésére vonatkozó tényezőket is vegye figyelembe. A legfontosabb minden esetben az, hogy az
-                        Ön
-                        által tárolni kívánt áru mennyiségét alaposan tervezze meg, mivel a megfelelő terület
-                        nélkülözhetetlen a raktárak tökéletes működéséhez. Egy nem várt lehetséges árukészlet növekedés
-                        azon
-                        nyomban zsúfoltságot illetve a raktári kiszolgálás romlását is eredményezheti.
-                    </p>
-                </article>
-            </div>
-            <div class="main-box">
-                <h2>Bolt berendezés - Ruházati, játék, élelmiszer, barkács</h2>
-                <a href="pics/IndexMain3.jpg"><img src="pics/IndexMain3.jpg" class="main3Img" alt="main3Img"></a>
-                <article>
-                    <p>A <b>kereskedelem</b> és azon belül a kiskereskedelem az egyik legfontosabb eleme az életünknek,
-                        a
-                        gazdasági életünknek, szinte mindenünknek. A mindennapi életünkhöz szükséges alkotók, a
-                        szórakozásunkhoz elengedhetetlen kellékek, az öltözködésünkhöz fontos ruhadarabok vagy a hobbink
-                        kellékeinek beszerzéséhez szinte minden esetben a kiskereskedelmi bolthálózatok valamelyikét
-                        keressük fel. És ezt a sort folytathatnánk olyan hosszúságig, hogy az már lassan unalmassá is
-                        válhatna. A lényege, hogy az emberek életvitelétől és anyagi helyzetétől függetlenül szinte
-                        minden
-                        nap felkeres kiskereskedelmi üzletet. Elmondható, hogy az üzletek között így jelentős a piaci
-                        verseny, minden üzlettulajdonos igyekszik elnyerni a vevők bizalmát.</p>
-                    <p>A <b>nagy</b> árverseny mellett rendkívül fontos lehet a bolt berendezés, legyen szó ruházati,
-                        játék,
-                        élelmiszer, barkács vagy egyéb üzletről. A jól megtervezett üzletberendezés rendkívül sok pluszt
-                        eredményezhet. Gondoljunk csak bele, hogy mennyivel vevőcsalogatóbb egy olyan pult, vagy polc
-                        melyen
-                        az áruk mindegyike jól látható nem tűnik túlzsúfoltnak, mégis rengeteg árut tárol.</p>
-                    <p>
-                        <b>Célunk</b>, hogy a kiskereskedelmi láncban szereplő és a kereskedelemben aktívan résztvevő
-                        üzlettulajdonosoknak minden esetben a lehető legjobb megoldást tudjuk kínálni, hogy a költségek
-                        optimalizálása mellett, a munkavédelmi és balesetvédelmi előírásokat betartva a lehető
-                        legszélesebb
-                        árukínálatot tudja vevőinek mutatni. Tapasztalataink alapján a legapróbb részletességgel kell
-                        megtervezni a bolt berendezés elemeinek elhelyezkedését, hogy a kiszolgálás zökkenőmentes, míg
-                        az
-                        árufeltöltés és pótlás nehézségek nélkül elvégezhető legyen.
-                    </p>
-                </article>
-            </div>
+
         </main>
         <footer>
             <div id="cookieWarning">

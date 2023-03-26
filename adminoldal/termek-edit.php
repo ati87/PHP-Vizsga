@@ -51,7 +51,6 @@ if (!isset($_SESSION['admin_user_id'])) {
                         if (isset($_GET['id']) && isset($_GET['arId'])) {
                             $termek_id = (int)$_GET['id'];
                             $termekar_id = (int)$_GET['arId'];
-                            print($termek_id."---".$termekar_id);
                             $termek_edit = "SELECT  termek.*, termekar.* FROM termek LEFT JOIN termekar 
                             ON termekar.termekar_id = '$termekar_id' WHERE termek.termek_id='$termek_id'";
 

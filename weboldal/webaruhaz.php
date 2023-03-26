@@ -130,52 +130,60 @@
                 $num_per_page = 05;
                 $start_from = ($page - 1) * 05;
 
+                //termékek betöltése
                 $sql = "SELECT termek.*, termekar.*
-                FROM termek LEFT JOIN termekar ON termek.termek_id = termekar.termek_id LIMIT $start_from, $num_per_page";
+                FROM termek 
+                LEFT JOIN termekar 
+                ON termek.termek_id = termekar.termek_id 
+                WHERE NOW() BETWEEN termekar.Tol AND termekar.Ig
+                LIMIT $start_from, $num_per_page";
+
                 $result = mysqli_query($conn, $sql);
                 if (!$result) {
                     print(mysqli_error($conn) . ' ' . mysqli_errno($conn));
                 } else {
                     while ($row = mysqli_fetch_assoc($result)) {
-                       
+
                 ?>
 
-                            <tr>
-                                <td><?php print($row['Megnevezes']); ?></td>
-                                <td><a href="../adminoldal/img/<?php print($row['Kep']) ?>  "><img src="../adminoldal/img/<?php print($row['Kep']) ?>" alt="" class="img-fluid" style="height:100px ;"></a></td>
-                                <td><?php print($row['Kategoria']); ?></td>
-                                <td><?php print($row['Leiras']); ?></td>
-                                <td><?php print($row['nettoAr']); ?> HUF</td>
-                                <?php
+                        <tr>
+                            <td><?php print($row['Megnevezes']); ?></td>
+                            <td><a href="../adminoldal/img/<?php print($row['Kep']) ?>  "><img src="../adminoldal/img/<?php print($row['Kep']) ?>" alt="" class="img-fluid" style="height:100px ;"></a></td>
+                            <td><?php print($row['Kategoria']); ?></td>
+                            <td><?php print($row['Leiras']); ?></td>
+                            <td><?php print($row['nettoAr']); ?> HUF</td>
+                            <?php
 
-                                if (isset($_SESSION['webpage_user_id'])) {
-                                ?>
-                                    <td>
-                                        <form action="webaruhaz.php" method="post">
+                            if (isset($_SESSION['webpage_user_id'])) {
+                            ?>
+                                <td>
+                                    <form action="webaruhaz.php" method="post" class="cart-form">
 
-                                            <input type="hidden" name='name' value=<?php print($row['Megnevezes']); ?>>
-                                            <input type="hidden" name='price' value=<?php print($row['nettoAr']); ?>>
-                                            <input type="hidden" name='img' value=<?php print($row['Kep']); ?>>
+                                        <input type="hidden" name='name' value="<?php print($row['Megnevezes']); ?>">
+                                        <input type="hidden" name='price' value="<?php print($row['nettoAr']); ?>">
+                                        <input type="hidden" name='img' value="<?php print($row['Kep']); ?>"">
+                                        <input type="hidden" name='id' value="<?php print($row['termek_id']); ?>">
 
 
-                                            <input type="number" name="number" min=0 max="<?php print($row['Darabszam']); ?>">
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-info" style="background-color:gray !important ;" type="submit" name="addToCart" value="<?php print($row['termek_id']); ?>">Kosárba</button>
-                                        </form>
-                                    </td>
-                                <?php
-                                }
-                                ?>
+                                        <input type="number" name="number" min=0 max="<?php print($row['Darabszam']); ?>">
+                                </td>
+                                <td>
+                                    <button class="btn btn-info" style="background-color:gray !important ;" type="submit" name="addToCart" value="<?php print($row['termek_id']); ?>">Kosárba</button>
+                                    </form>
+                                </td>
+                            <?php
+                            }
+                            ?>
 
-                            </tr>
+                        </tr>
 
                 <?php
-                        
+
                     }
                 }
-               
 
+
+                
                 ?>
             </table>
 
@@ -222,7 +230,22 @@
     </div>
 </body>
 <script src="js/nav.js">
+</script>
 
+<script>
+    const forms = document.querySelectorAll('.cart-form');
+
+    forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log(form);
+            const formData = new FormData(form);
+            const xhr = new XMLHttpRequest();
+
+            xhr.open('POST', 'php/addToCart.php');
+            xhr.send(formData);
+        });
+    });
 </script>
 
 </html>
