@@ -106,7 +106,7 @@
                     <th>Kép</th>
                     <th>Kategoria</th>
                     <th>Leiras</th>
-                    <th>Nettó ár</th>
+                    <th>Nettó ár (HUF)</th>
                     <?php
                     if (isset($_SESSION['webpage_user_id'])) {
                     ?>
@@ -151,10 +151,11 @@
                             <td><a href="../adminoldal/img/<?php print($row['Kep']) ?>  "><img src="../adminoldal/img/<?php print($row['Kep']) ?>" alt="" class="img-fluid" style="height:100px ;"></a></td>
                             <td><?php print($row['Kategoria']); ?></td>
                             <td><?php print($row['Leiras']); ?></td>
-                            <td><?php print($row['nettoAr']); ?> HUF</td>
+                            <td> <?php print(number_format($row['nettoAr'], 0, ',', ' ')); ?></td>
+                            
                             <?php
 
-                            if (isset($_SESSION['webpage_user_id'])) {
+                            if (isset($_SESSION['webpage_user_id'])) {  
                             ?>
                                 <td>
                                     <form action="webaruhaz.php" method="post" class="cart-form">
@@ -163,8 +164,6 @@
                                         <input type="hidden" name='price' value="<?php print($row['nettoAr']); ?>">
                                         <input type="hidden" name='img' value="<?php print($row['Kep']); ?>"">
                                         <input type="hidden" name='id' value="<?php print($row['termek_id']); ?>">
-
-
                                         <input type="number" name="number" min=0 max="<?php print($row['Darabszam']); ?>">
                                 </td>
                                 <td>
@@ -242,7 +241,7 @@
             const formData = new FormData(form);
             const xhr = new XMLHttpRequest();
 
-            xhr.open('POST', 'php/addToCart.php');
+            xhr.open('POST', 'php/code.php');
             xhr.send(formData);
         });
     });

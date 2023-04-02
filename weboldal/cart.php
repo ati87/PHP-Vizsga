@@ -13,7 +13,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raktártechnika</title>
     <link rel="icon" type="image/png" href="pics/favicon-32x32.png">
-    <link rel="stylesheet" href="./css/index.css?v=1">
+    <link rel="stylesheet" href="./css/index.css">
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #customers .align-right {
+            text-align: right;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: orangered;
+            color: white;
+        }
+        .button-cart{
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            background-color: transparent;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            border-radius: 0.25rem;
+        }
+        .btn:hover{
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -53,55 +112,63 @@
             </div>
             <div class="main-box">
                 <?php
-                if (isset($_SESSION['cart'])) {
-                    foreach($_SESSION['cart'] as $item) {
-                        print($item['name']);
-                        print("  -  ".$item['number']." db");
-                        print("  -  ".$item['price']." Ft");
-                        print('<br>');
-
-                    }
+                if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
                 ?>
 
-
-                    <!--
                     <table id="customers">
                         <tr>
 
                             <th>Megnevezes</th>
                             <th>Kép</th>
-                            <th>Kategoria</th>
-                            <th>Leiras</th>
                             <th>Nettó ár</th>
-                            <th>Vásárolni kívánt mennyiség</th>
-                            <th></th>
+                            <th>Rendelt mennyiség</th>
+                            <th>Nettó összesen</th>
+                            <th>Termék törlése</th>
                         </tr>
+                        <?php
+                        $total = 0;
+                        foreach ($_SESSION['cart'] as $item) {
+                            $subtotal = $item['price'] * $item['number'];
+                            $total += $subtotal;
+                        ?>
+                            <tr>
+                                <td><?php print($item['name']); ?></td>
+                                <td><a href="../adminoldal/img/<?php print($item['img']) ?>  "><img src="../adminoldal/img/<?php print($item['img']) ?>" alt="" class="img-fluid" style="height:50px ;"></a></td>
+                                <td> <?php print(number_format($item['price'], 0, ',', ' ')); ?> HUF</td>
+                                <td><?php print($item['number']); ?></td>
+                                <td><?php print(number_format($subtotal, 0, ',', ' ')); ?> HUF</td>
+                                <td>
+                                    <form action="./php/code.php" method="post">
+                                        <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
+                                        <input class="btn" type="submit" name="delete" value="Törlés">
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
                         <tr>
-                            <td><?php print($row['Megnevezes']); ?></td>
-                            <td><a href="../adminoldal/img/<?php print($row['Kep']) ?>  "><img src="../adminoldal/img/<?php print($row['Kep']) ?>" alt="" class="img-fluid" style="height:100px ;"></a></td>
-                            <td><?php print($row['Kategoria']); ?></td>
-                            <td><?php print($row['Leiras']); ?></td>
-                            <td><?php print($row['nettoAr']); ?> HUF</td>
+                            <td class="align-right" colspan="6">Összesen nettó:<b> <?php print(number_format($total, 0, ',', ' ')); ?></b> HUF</td>
                         </tr>
-                -->
+                    </table>
 
 
-
-                    <?php
-                    print_r('<br>');
-                    print_r($_SESSION['cart']);
-                    print_r('<br>');
-                    print_r('<br>');
-                    var_dump($_SESSION['cart']);
+                <?php
                 } else {
-                    print("A kosár taralma üres");
+                    print('<div class="empty-cart"><b>A kosár taralma üres.</b></div>');
                 }
-                    ?>
+                ?>
 
 
 
             </div>
-
+            <?php
+            if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+            ?>
+                <button  class="button-cart" id="empty-cart">Kosár ürítése</button>
+            <?php
+            }
+            ?>
         </main>
         <footer>
             <div id="cookieWarning">
@@ -129,7 +196,22 @@
     </div>
 </body>
 <script src="js/nav.js">
+</script>
+<script>
+    document.getElementById("empty-cart").onclick = function() {
+        if (confirm("Biztosan törölni szeretné a kosár tartalmát?")) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "php/empty_cart.php", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText); // ha a szerver visszaküld valamilyen választ, akkor az itt jelenik meg
+                    location.reload(); // oldal újratöltése
+                }
+            };
+            xhr.send();
+        }
 
+    };
 </script>
 
 </html>

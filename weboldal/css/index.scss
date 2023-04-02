@@ -4,8 +4,7 @@
     font-family: "fontello";
     src: url("../fonts/fontello.eot?98824604");
     src: url("../fonts/fontello.eot?98824604#iefix") format("embedded-opentype"),
-        url("../fonts/fontello.woff2?98824604") format("woff2"), 
-        url("../fonts/fontello.woff?98824604") format("woff"),
+        url("../fonts/fontello.woff2?98824604") format("woff2"), url("../fonts/fontello.woff?98824604") format("woff"),
         url("../fonts/fontello.ttf?98824604") format("truetype"),
         url("../fonts/fontello.svg?98824604#fontello") format("svg");
     font-weight: normal;
@@ -70,26 +69,32 @@ label {
 }
 input {
     margin: 0 5px;
-    border: 1px solid #CCCCCC;
+    border: 1px solid #cccccc;
 }
-.register{
+.register {
     margin-left: 20px;
     padding: 2px 3px 2px 3px;
     -webkit-border-radius: 1px;
     -moz-border-radius: 1px;
     border-radius: 1px;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.16, rgb(207, 207, 207)), color-stop(0.79, rgb(252, 252, 252)));
-     background-image: -moz-linear-gradient(center bottom, rgb(207, 207, 207) 16%, rgb(252, 252, 252) 79%);
-    background-image: linear-gradient(to top, rgb(207, 207, 207) 16%, rgb(252, 252, 252) 79%); 
-  
-   font-size: 14px;
-   color: black;
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.16, rgb(207, 207, 207)),
+        color-stop(0.79, rgb(252, 252, 252))
+    );
+    background-image: -moz-linear-gradient(center bottom, rgb(207, 207, 207) 16%, rgb(252, 252, 252) 79%);
+    background-image: linear-gradient(to top, rgb(207, 207, 207) 16%, rgb(252, 252, 252) 79%);
+
+    font-size: 14px;
+    color: black;
     text-decoration: none;
 }
-.logout{
-        display:flex;
-        justify-content:flex-end;
-        flex-wrap: wrap;
+.logout {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 .navImg {
     float: left;
@@ -101,7 +106,6 @@ nav {
     width: 100%;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
 }
-
 
 ul {
     list-style: none;
@@ -184,8 +188,8 @@ main {
     margin: 50px auto 0 auto;
     width: 95%;
 }
-main form input{
-    width: 200px !important;
+main form input {
+    width: 100px;
 }
 
 .cimsorH1 {
@@ -198,16 +202,20 @@ main form input{
     margin-top: 20px;
     border-radius: 5px;
 }
-.h1{
+.h1 {
     position: absolute;
     top: 90px;
     animation-name: title;
     animation-duration: 3s;
     animation-fill-mode: forwards;
 }
-@keyframes title{
-    0% {top: 90px}
-    100%{top:130px}
+@keyframes title {
+    0% {
+        top: 90px;
+    }
+    100% {
+        top: 130px;
+    }
 }
 
 .main-box::after {
@@ -245,7 +253,7 @@ main form input{
     height: 300px !important;
     margin-top: 55px !important;
 }
-.ImgRaklapos{
+.ImgRaklapos {
     height: 400px !important;
     margin-top: 20px !important;
     margin-right: 10px !important;
@@ -268,9 +276,9 @@ iframe {
 .connection {
     display: flex;
 }
-.availability{
+.availability {
     margin-top: 0.5rem;
-    margin-left: .5rem  ;
+    margin-left: 0.5rem;
 }
 .availability ul li {
     float: none;
@@ -332,6 +340,18 @@ footer {
     content: none;
 }
 
+.button-cart {
+    margin: 5px 0;
+    float: right;
+}
+
+.empty-cart {
+    margin:  40px 0;
+    font-size:larger ;
+    text-align: center;
+}
+
+
 //A MÉDIA QUERY INNEN KEZDŐDIK
 
 @media only screen and (max-width: 700px) {
@@ -341,8 +361,8 @@ footer {
         -o-transition: none !important;
         -ms-transition: none !important;
         transition: none !important;
-       }
-     
+    }
+
     header {
         position: static;
     }
@@ -377,10 +397,10 @@ footer {
     .cimsorH1 {
         height: 70px;
     }
-    .h1{
+    .h1 {
         position: static;
     }
-   
+
     .main-box h2 {
         font-size: 16px;
     }
@@ -400,7 +420,7 @@ footer {
         height: 200px !important;
         margin-top: 55px !important;
     }
-    .ImgRaklapos{
+    .ImgRaklapos {
         height: 300px !important;
     }
     .connection {
@@ -430,7 +450,7 @@ footer {
         flex-direction: column;
         align-items: flex-end;
     }
-    
+
     #submit {
         width: auto !important;
     }
@@ -441,7 +461,7 @@ footer {
         height: 120px !important;
         margin-top: 45px !important;
     }
-    .ImgRaklapos{
+    .ImgRaklapos {
         height: 200px !important;
     }
     iframe {

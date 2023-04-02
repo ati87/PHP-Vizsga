@@ -14,13 +14,13 @@ if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['img']) && i
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array();
     }
-
+    if($number>0){
     // Ellenőrizzük, hogy az adott termék már szerepel-e a kosárban
     $itemExists = false;
-    foreach ($_SESSION['cart'] as &$item) {
+    foreach ($_SESSION['cart'] as $key => $item) {
         if ($item['id'] == $id) {
             // Ha a termék már szerepel a kosárban, növeljük a mennyiségét
-            $item['number'] += $number;
+            $_SESSION['cart'][$key]['number'] += $number;
             $itemExists = true;
             break;
         }
@@ -37,7 +37,20 @@ if (isset($_POST['name']) && isset($_POST['price']) && isset($_POST['img']) && i
         );
         array_push($_SESSION['cart'], $item);
     }
-
+}
     // Válasz visszaküldése az AJAX kérésnek
     echo "success";
+}
+
+//kosárból való törlés
+if (isset($_POST['delete'])) {
+    $id = $_POST['id'];
+    foreach ($_SESSION['cart'] as $key => $item) {
+        if ($item['id'] == $id) {
+            unset($_SESSION['cart'][$key]);
+        }
+    }
+    $_SESSION['cart'] = array_values($_SESSION['cart']);
+    header('Location: ../cart.php');
+    exit();
 }

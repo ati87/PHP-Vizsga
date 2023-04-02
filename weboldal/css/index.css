@@ -86,7 +86,7 @@ label {
 
 input {
   margin: 0 5px;
-  border: 1px solid #CCCCCC;
+  border: 1px solid #cccccc;
 }
 
 .register {
@@ -223,7 +223,7 @@ main {
 }
 
 main form input {
-  width: 200px !important;
+  width: 100px;
 }
 
 .cimsorH1 {
@@ -348,7 +348,7 @@ iframe {
 
 .availability {
   margin-top: 0.5rem;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .availability ul li {
@@ -421,6 +421,17 @@ footer {
 
 .footer .icon-home:before {
   content: none;
+}
+
+.button-cart {
+  margin: 5px 0;
+  float: right;
+}
+
+.empty-cart {
+  margin: 40px 0;
+  font-size: larger;
+  text-align: center;
 }
 
 @media only screen and (max-width: 700px) {
